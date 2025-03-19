@@ -1,0 +1,110 @@
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.dark .preCondition {
+  background: #1f2937;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.dark .preCondition h2 {
+  color: #ffffff;
+}
+
+.dark .preConditionItem label {
+  color: #e2e8f0;
+}
+
+.dark .preConditionItem input,
+.dark .preConditionItem textarea {
+  background: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.dark .preConditionItem input:focus,
+.dark .preConditionItem textarea:focus {
+  background: #4b5563;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.dark .customFileInput {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.dark .customFileInput:hover,
+.dark .customFileInput.dragActive {
+  background: #4b5563;
+  border-color: #3b82f6;
+}
+
+.dark .customFileInput::before {
+  color: #e2e8f0;
+}
+
+.dark .customFileInput::after {
+  color: #9ca3af;
+}
+
+.dark .preConditionConfirm {
+  background: #3b82f6;
+}
+
+.dark .preConditionConfirm:hover {
+  background: #2563eb;
+}
+
+.dark .preConditionConfirm:disabled {
+  background: #4b5563;
+}
+
+.dark .cloud {
+  background: #1f2937;
+  border-color: #4b5563;
+}
+
+.dark .usermessage {
+  background: #374151;
+  color: #ffffff;
+}
+
+.dark .apimessage {
+  background: #4b5563;
+  color: #ffffff;
+}
+
+.dark .usermessagewaiting {
+  background: linear-gradient(to left, #374151, #4b5563, #374151);
+}
+
+.dark .textarea {
+  background: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.dark .textarea:focus {
+  background: #4b5563;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.dark .textarea::placeholder {
+  color: #9ca3af;
+}
+
+.dark .progressBar {
+  background-color: #374151;
+}
+
+.dark .progressText {
+  color: #ffffff;
+} 
