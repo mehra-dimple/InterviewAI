@@ -70,15 +70,16 @@ export async function POST(request: Request) {
   const req: InterviewReqBody = await request.json();
 
   try {
+    const chatHistory = new RedisChatMessageHistory({
+      sessionId: request.headers.get("Interview-Id") || new Date().toISOString(),
+      sessionTTL: 300,
+      client,
+    });
+
     const bufferMemory = new BufferMemory({
       inputKey: "humanInput",
       returnMessages: true,
-      chatHistory: new RedisChatMessageHistory({
-        sessionId:
-          request.headers.get("Interview-Id") || new Date().toISOString(),
-        sessionTTL: 300,
-        client,
-      }),
+      chatHistory,
     });
 
     const chain = new ConversationChain({
@@ -97,14 +98,22 @@ export async function POST(request: Request) {
     } else if (req.status === "interviewing") {
       let humanInput = `This is my answer: <answer>${req.human}</answer>. `;
       let askingTips = `(REMEMBER: <tip>${askingArt}</tip>)`;
-      if (checkCanAskNextRound(req.interviewStep)) {
+      
+      if (checkIsLastQuestionLastRound(req.interviewStep)) {
+        // Get all messages from the chat history for final evaluation
+        const messages = await chatHistory.getMessages();
+        const interviewHistory = messages
+          .map(msg => msg.content)
+          .join("\n\n");
+        
+        humanInput = `Here is the complete interview history:\n${interviewHistory}\n\n${EndInterview} ${askForEvaluation}`;
+        end = true;
+      } else if (checkCanAskNextRound(req.interviewStep)) {
         humanInput += `${startFollowUpQuestion} ${askingTips}`;
       } else if (checkCanAskNextQuestion(req.interviewStep)) {
         humanInput += `${startNextQuestion} ${askingTips}`;
-      } else if (checkIsLastQuestionLastRound(req.interviewStep)) {
-        humanInput += `${EndInterview} ${askForEvaluation}`;
-        end = true;
       }
+      
       res = (await chain.call({ humanInput }))?.response;
     }
     return NextResponse.json({ error: "", text: res, end });

@@ -6,39 +6,27 @@ export const startNextQuestion = "Ask a new technical question.";
 
 export const EndInterview = "Thank you for your time. Here's your technical evaluation:";
 
-export const askForEvaluation = `Evaluate based on:
+export const askForEvaluation = `Evaluate based on all questions asked during the interview, considering:
 
 1. Technical Knowledge (40%):
-   - Depth of technical understanding
-   - Technical problem-solving ability
-   - Implementation knowledge
-   - System design capability
-   - Technical best practices awareness
+   - Understanding of core concepts
+   - Problem-solving approach
+   - Best practices awareness
 
 2. Technical Communication (25%):
-   - Technical explanation clarity
-   - Implementation articulation
+   - Clarity and conciseness
    - Technical discussion ability
-   - Technical question handling
-   - Technical documentation skills
 
 3. Technical Implementation (20%):
-   - Code quality
-   - Architecture design
-   - Performance optimization
-   - Testing practices
-   - Security awareness
+   - Code quality and architecture
+   - Performance considerations
 
 4. Technical Problem-Solving (15%):
    - Algorithmic thinking
-   - System optimization
-   - Debugging approach
-   - Technical decision-making
-   - Scalability considerations
+   - System design approach
 
-Provide a detailed technical evaluation including:
+Provide a concise evaluation including:
 - Overall technical score (1-5)
-- Technical strengths with specific examples
-- Technical areas for improvement
-- Specific technical recommendations
-- Technical growth suggestions`;
+- Key strengths (2-3 points)
+- Main areas for improvement (1-2 points)
+- Growth recommendations (1-2 points)`;
